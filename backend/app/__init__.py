@@ -1,0 +1,2 @@
+"""AfterMeet backend application package."""
+
