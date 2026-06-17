@@ -14,9 +14,11 @@ class Settings(BaseSettings):
     app_name: str = "AfterMeet Backend"
     app_version: str = "0.1.0"
     environment: str = Field(default="development", alias="APP_ENV")
+    database_url: str = Field(default="sqlite:///./aftermeet.db", alias="DATABASE_URL")
     api_v1_prefix: str = "/api/v1"
     upload_dir: str = Field(default="uploads", alias="UPLOAD_DIR")
     max_upload_size_mb: int = Field(default=100, alias="MAX_UPLOAD_SIZE_MB")
+    whisper_model_name: str = Field(default="small", alias="WHISPER_MODEL_NAME")
 
 
 @lru_cache(maxsize=1)

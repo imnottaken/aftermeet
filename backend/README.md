@@ -34,4 +34,7 @@ curl http://localhost:8000/health
 - `APP_ENV`: runtime environment name, default `development`
 - `APP_NAME`: application name shown in FastAPI docs
 - `APP_VERSION`: application version shown in FastAPI docs
-
+- `DATABASE_URL`: database connection string, default `sqlite:///./aftermeet.db`
+- `UPLOAD_DIR`: local upload directory, default `uploads`
+- `MAX_UPLOAD_SIZE_MB`: maximum upload size, default `100`
+- `WHISPER_MODEL_NAME`: faster-whisper model size, default `small`

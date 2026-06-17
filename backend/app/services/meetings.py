@@ -33,3 +33,5 @@ class MeetingService:
             transcript_status="pending",
         )
 
+    def get_meeting(self, meeting_id: str) -> Meeting | None:
+        return self.db.query(Meeting).filter(Meeting.id == meeting_id).one_or_none()
