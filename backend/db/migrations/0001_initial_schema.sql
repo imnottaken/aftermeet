@@ -15,11 +15,10 @@ $$;
 
 create table if not exists public.meetings (
   id uuid primary key default gen_random_uuid(),
-  title text not null,
+  title text,
   original_filename text not null,
+  transcript_status text not null default 'pending',
   uploaded_at timestamptz not null default now(),
-  transcript_status text not null default 'pending'
-    check (transcript_status in ('pending', 'processing', 'completed', 'failed')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -38,9 +37,8 @@ create table if not exists public.action_items (
   meeting_id uuid not null references public.meetings(id) on delete cascade,
   assignee_name text,
   task_description text not null,
-  deadline date,
-  status text not null default 'pending'
-    check (status in ('pending', 'completed', 'blocked', 'cancelled')),
+  deadline timestamptz,
+  status text not null default 'pending',
   created_at timestamptz not null default now()
 );
 
@@ -77,4 +75,3 @@ create trigger trg_meetings_updated_at
 before update on public.meetings
 for each row
 execute function public.set_updated_at();
-
