@@ -23,6 +23,8 @@ cp .env.example .env
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
+For local development, the app defaults to a SQLite database inside the backend folder and will initialize the SQLite tables on startup.
+
 5. Verify the health endpoint:
 
 ```bash
@@ -34,7 +36,7 @@ curl http://localhost:8000/health
 - `APP_ENV`: runtime environment name, default `development`
 - `APP_NAME`: application name shown in FastAPI docs
 - `APP_VERSION`: application version shown in FastAPI docs
-- `DATABASE_URL`: database connection string, default `sqlite:///./aftermeet.db`
+- `DATABASE_URL`: database connection string. For local SQLite, prefer an absolute path such as `sqlite:////absolute/path/to/backend/aftermeet.db`
 - `UPLOAD_DIR`: local upload directory, default `uploads`
 - `MAX_UPLOAD_SIZE_MB`: maximum upload size, default `100`
 - `WHISPER_MODEL_NAME`: faster-whisper model size, default `small`
